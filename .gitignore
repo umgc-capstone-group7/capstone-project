@@ -217,3 +217,5 @@ __marimo__/
 .idea/
 .vscode/
 *.swp
+.venv/
+__pycache__/
