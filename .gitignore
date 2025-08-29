@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Databases
+*.db
+*.sqlite3
+
+# System files
+.DS_Store
+
+# Editor/project files
+.idea/
+.vscode/
+*.swp
+
