@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="title">Welcome, {{ name }}</h2>
+  <p class="subtitle">This is your Account Center. Use the sections below to get where you need to go.</p>
+
+  <div class="grid">
+    <div class="tile">
+      <h3>Class Selection</h3>
+      <p>Browse offerings and add classes for next term.</p>
+      <button class="btn btn-secondary" disabled>Coming in Week 4</button>
+    </div>
+    <div class="tile">
+      <h3>Class History & GPA</h3>
+      <p>See your completed courses and GPA summary.</p>
+      <button class="btn btn-secondary" disabled>Coming in Week 4–5</button>
+    </div>
+    <div class="tile">
+      <h3>Degree Planning</h3>
+      <p>Map out remaining requirements and timelines.</p>
+      <button class="btn btn-secondary" disabled>Coming in Week 5–6</button>
+    </div>
+    <div class="tile">
+      <h3>Advising</h3>
+      <p>Simulated advisor messages and guidance.</p>
+      <button class="btn btn-secondary" disabled>Coming in Week 7</button>
+    </div>
+    <div class="tile">
+      <h3>Tutoring</h3>
+      <p>Connect to study resources and help centers.</p>
+      <button class="btn btn-secondary" disabled>Coming in Week 7–8</button>
+    </div>
+    <div class="tile">
+      <h3>Financing</h3>
+      <p>Info and tools to understand tuition and aid.</p>
+      <button class="btn btn-secondary" disabled>Coming in Week 8</button>
+    </div>
+  </div>
+{% endblock %}

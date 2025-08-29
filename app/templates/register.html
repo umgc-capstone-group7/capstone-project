@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="title">Create Your Account</h2>
+  <p class="subtitle">Set up your student access so you can register for classes and track your progress.</p>
+  <form method="post" class="form-grid">
+    {{ form.hidden_tag() }}
+    <label>Name</label>
+    {{ form.name(class="input") }}
+    <label>Email</label>
+    {{ form.email(class="input") }}
+    <label>Password</label>
+    {{ form.password(class="input") }}
+    <div class="actions">
+      {{ form.submit(class="btn") }}
+      <a class="link" href="{{ url_for('main.login') }}">Already registered? Sign in</a>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% set site_title = "UMGC Student Account Resource" %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-content container">
+        <div class="hero-left">
+          <h1>{{ site_title }}</h1>
+          <p class="tagline">One place for classes, GPA, advising, tutoring, and financing.</p>
+          <ul class="pill-list">
+            <li>Registration</li>
+            <li>Class History & GPA</li>
+            <li>Degree Planning</li>
+            <li>Advising & Tutoring</li>
+            <li>Financing</li>
+          </ul>
+        </div>
+        <div class="hero-right">
+          <!-- Fun, study-themed looping GIF (replace URL anytime) -->
+          <img class="hero-gif" alt="UMGC Testudo Mascot" src="https://media.giphy.com/media/9GIiWvUMqz7AfF6AL9/giphy.gif">
+        </div>
+      </div>
+      <nav class="topnav container">
+        <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('main.login') }}">Login</a>
+        <a href="{{ url_for('main.register') }}">Register</a>
+        <a class="right" href="{{ url_for('main.logout') }}">Logout</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">
+            {% for m in messages %}<div class="flash-item">{{ m }}</div>{% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <section class="card fade-in">
+        {% block content %}{% endblock %}
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Built for UMGC students as a capstone demo — Python Flask + SQLite + HTML/CSS.</p>
+      </div>
+    </footer>
+  </body>
+</html>
