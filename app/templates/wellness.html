@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Catch phrase + disclaimer -->
+<div class="card" style="background:#1f2937; color:#f9fafb; border:2px solid #111827; margin-bottom:20px; border-radius:16px;">
+  <h2 style="margin-top:0;">💙 Mental Health Matters</h2>
+  <p>Your well-being is as important as your academics. Use these resources—asking for help is strength.</p>
+  <p style="font-style:italic; opacity:0.85; margin-top:8px;">
+    This page is informational only and not a substitute for professional care. In an emergency, call 911.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Wellness Resources</h2>
+  <p>Curated links for UMGC students. For immediate danger or life-threatening situations, call <strong>911</strong>.</p>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>Need Assistance?</h3>
+  <p><strong>UMGC Wellness Line:</strong> <a href="tel:8883719355">888-371-9355</a></p>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>Togetherall (24/7 peer support)</h3>
+  <p>Anonymous, no-cost, 24/7 online peer-to-peer support for UMGC students.</p>
+  <p>
+    <a href="https://account.v2.togetherall.com" target="_blank" rel="noopener">Register with UMGC email</a> ·
+    <a href="https://togetherall.com" target="_blank" rel="noopener">Learn more</a>
+  </p>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>Community Programs & UMGC Support</h3>
+  <ul>
+    <li><a href="https://www.disasterassistance.gov" target="_blank" rel="noopener">Disaster Assistance</a></li>
+    <li><a href="https://www.findhelp.org" target="_blank" rel="noopener">FindHelp (local & national resources)</a></li>
+    <li><a href="https://www.consumerfinance.gov/coronavirus/mortgage-and-housing-assistance/renter-protections/find-help-with-rent-and-utilities/" target="_blank" rel="noopener">Rental Assistance (CFPB)</a></li>
+    <li><a href="https://www.211.org" target="_blank" rel="noopener">United Way 211</a></li>
+    <li><a href="https://www.umgc.edu/current-students/tuition-financial-aid/student-aid-fund-for-emergency-relief" target="_blank" rel="noopener">SAFER Fund (Emergency Relief)</a></li>
+    <li><a href="https://mhec.maryland.gov/Pages/Tuition-Waiver-Homeless-Foster-Care.aspx" target="_blank" rel="noopener">MD Homeless Youth Waiver</a></li>
+    <li><a href="https://www.singlestop.org" target="_blank" rel="noopener">Single Stop</a></li>
+  </ul>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>Wellness & Mental Health</h3>
+  <ul>
+    <li><a href="https://www.crisistextline.org" target="_blank" rel="noopener">Crisis Text Line</a> — text <strong>HOME</strong> to <strong>741741</strong></li>
+    <li><a href="https://988lifeline.org" target="_blank" rel="noopener">988 Suicide & Crisis Lifeline</a></li>
+    <li><a href="https://www.nami.org" target="_blank" rel="noopener">NAMI</a></li>
+    <li><a href="https://www.samhsa.gov" target="_blank" rel="noopener">SAMHSA</a></li>
+    <li><a href="https://umgc.welltrack-connect.com" target="_blank" rel="noopener">Welltrack Connect (therapist directory)</a></li>
+  </ul>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>Military, Veteran, & Family</h3>
+  <ul>
+    <li><a href="https://www.armyemergencyrelief.org" target="_blank" rel="noopener">Army Emergency Relief</a></li>
+    <li><a href="https://www.cgmahq.org" target="_blank" rel="noopener">Coast Guard Mutual Assistance</a></li>
+    <li><a href="https://www.militaryonesource.mil" target="_blank" rel="noopener">Military OneSource</a></li>
+    <li><a href="https://www.nrd.gov" target="_blank" rel="noopener">National Resource Directory</a></li>
+    <li><a href="https://www.nmcrs.org" target="_blank" rel="noopener">Navy-Marine Corps Relief Society</a></li>
+    <li><a href="https://servingtogetherproject.org" target="_blank" rel="noopener">Serving Together Project</a></li>
+    <li><a href="https://www.va.gov" target="_blank" rel="noopener">VA Resources</a></li>
+    <li><a href="https://www.veteranscrisisline.net" target="_blank" rel="noopener">Veterans' Crisis Line</a></li>
+  </ul>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <h3>LGBTQ+ Student Association</h3>
+  <p><a href="https://www.facebook.com" target="_blank" rel="noopener">Join LGBTQ+ Group</a></p>
+</div>
+
+<!-- New: National Support & Hotlines -->
+<div class="card" style="margin-top:16px;">
+  <h3>National Support & Hotlines</h3>
+  <ul>
+    <li><a href="https://www.thetrevorproject.org/get-help-now/" target="_blank" rel="noopener">
+      The Trevor Project — 24/7 crisis support for LGBTQ+ youth</a></li>
+    <li><a href="https://www.rainn.org" target="_blank" rel="noopener">
+      RAINN — National Sexual Assault Hotline (800-656-4673) + online chat</a></li>
+    <li><a href="https://www.thehotline.org" target="_blank" rel="noopener">
+      National Domestic Violence Hotline — 24/7 confidential help</a></li>
+    <li><a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener">
+      SAMHSA Helpline — 1-800-662-HELP (4357) for treatment referrals</a></li>
+    <li><a href="https://findsupport.gov" target="_blank" rel="noopener">
+      FindSupport.gov — find local mental health & substance use resources</a></li>
+    <li><a href="https://www.loveisrespect.org" target="_blank" rel="noopener">
+      Love Is Respect — relationship & dating abuse support</a></li>
+    <li><a href="https://translifeline.org" target="_blank" rel="noopener">
+      Trans Lifeline — peer support hotline for trans people</a></li>
+    <li><a href="https://www.copenotes.com" target="_blank" rel="noopener">
+      Cope Notes — daily mental wellness text messages</a></li>
+    <li><a href="https://teenlineonline.org" target="_blank" rel="noopener">
+      Teen Line — peer support hotline for teens</a></li>
+  </ul>
+</div>
+
+<div class="card" style="margin-top:16px; opacity:0.7;">
+  <small>Source: Links curated from UMGC's Wellness Resources and national providers. Links open official sites.</small>
+</div>
+{% endblock %}

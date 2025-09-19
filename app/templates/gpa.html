@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>GPA Calculator</h2>
+  <p>Enter your courses for this term. Add rows as needed. Use letter grades (A, A-, B+, …), numeric points (0–4.0), or percentages (0–100).</p>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <form id="gpaForm" onsubmit="event.preventDefault(); computeGPA();">
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+      <div>
+        <label>Prior cumulative credits</label>
+        <input type="number" id="priorCredits" min="0" max="120" step="1" placeholder="e.g., 45">
+      </div>
+      <div>
+        <label>Prior cumulative GPA</label>
+        <input type="number" id="priorGPA" min="0" max="4" step="0.01" placeholder="e.g., 3.42">
+      </div>
+    </div>
+
+    <table id="courses" style="width:100%; border-collapse:collapse; margin-top:8px;">
+      <thead>
+        <tr>
+          <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Course</th>
+          <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Credits</th>
+          <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Grade (A, B+, 3.7, …)</th>
+          <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:8px;"><input placeholder="CS301"></td>
+          <td style="padding:8px;"><input type="number" min="0" max="6" step="0.5" value="3"></td>
+          <td style="padding:8px;"><input placeholder="A-"></td>
+          <td style="padding:8px;"><button type="button" onclick="removeRow(this)">✕</button></td>
+        </tr>
+        <tr>
+          <td style="padding:8px;"><input placeholder="MATH341"></td>
+          <td style="padding:8px;"><input type="number" min="0" max="6" step="0.5" value="3"></td>
+          <td style="padding:8px;"><input placeholder="B+"></td>
+          <td style="padding:8px;"><button type="button" onclick="removeRow(this)">✕</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn" type="button" onclick="addRow()">Add Course</button>
+      <button class="btn" type="submit">Compute GPA</button>
+    </div>
+  </form>
+</div>
+
+<div class="card" style="margin-top:16px;" id="results" hidden>
+  <h3>Results</h3>
+  <p id="termSummary"></p>
+  <p id="cumulativeSummary"></p>
+</div>
+
+<script>
+const LETTER_POINTS = {
+  "A+": 4.0, "A": 4.0, "A-": 3.7,
+  "B+": 3.3, "B": 3.0, "B-": 2.7,
+  "C+": 2.3, "C": 2.0, "C-": 1.7,
+  "D+": 1.3, "D": 1.0, "D-": 0.7,
+  "F": 0.0
+};
+
+function parseGrade(val) {
+  if (!val) return null;
+  const t = val.trim().toUpperCase();
+
+  // 1) Letter grades
+  if (LETTER_POINTS.hasOwnProperty(t)) return LETTER_POINTS[t];
+
+  // 2) Numeric GPA points (0–4)
+  const num = Number(t);
+  if (!isNaN(num)) {
+    if (num >= 0 && num <= 4.0) return num;
+
+    // 3) Percentage conversion (0–100)
+    if (num >= 0 && num <= 100) {
+      if (num >= 93) return 4.0;        // A
+      if (num >= 90) return 3.7;        // A-
+      if (num >= 87) return 3.3;        // B+
+      if (num >= 83) return 3.0;        // B
+      if (num >= 80) return 2.7;        // B-
+      if (num >= 77) return 2.3;        // C+
+      if (num >= 73) return 2.0;        // C
+      if (num >= 70) return 1.7;        // C-
+      if (num >= 67) return 1.3;        // D+
+      if (num >= 65) return 1.0;        // D
+      return 0.0;                       // below 65 = F
+    }
+  }
+
+  return null;
+}
+
+function addRow() {
+  const tbody = document.querySelector("#courses tbody");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td style="padding:8px;"><input></td>
+    <td style="padding:8px;"><input type="number" min="0" max="6" step="0.5" value="3"></td>
+    <td style="padding:8px;"><input placeholder="A, B+, 3.7"></td>
+    <td style="padding:8px;"><button type="button" onclick="removeRow(this)">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function removeRow(btn) {
+  const tr = btn.closest("tr");
+  tr.parentNode.removeChild(tr);
+}
+
+function computeGPA() {
+  const rows = Array.from(document.querySelectorAll("#courses tbody tr"));
+  let termCredits = 0, termQP = 0;
+
+  // validate prior values
+  const priorC = Number(document.getElementById("priorCredits").value || 0);
+  const priorG = Number(document.getElementById("priorGPA").value || 0);
+  if (priorC < 0 || priorC > 120) { alert("Prior cumulative credits must be between 0 and 120."); return; }
+  if (priorG < 0 || priorG > 4) { alert("Prior cumulative GPA must be between 0.00 and 4.00."); return; }
+
+  for (const r of rows) {
+    const creditsEl = r.children[1].querySelector("input");
+    const gradeEl = r.children[2].querySelector("input");
+    const credits = Number(creditsEl.value || 0);
+    const gp = parseGrade(gradeEl.value);
+
+    if (credits < 0 || credits > 6) { alert("Each course's credits must be between 0 and 6."); return; }
+    if (gp !== null && (gp < 0 || gp > 4)) { alert("Grades must map to 0.00–4.00."); return; }
+
+    if (credits > 0 && gp !== null) {
+      termCredits += credits;
+      termQP += credits * gp;
+    }
+  }
+
+  // total credit cap
+  if (priorC + termCredits > 120) {
+    alert("Total credits (prior + this term) cannot exceed 120.");
+    return;
+  }
+
+  const priorQP = priorC * priorG;
+  const termGPA = termCredits > 0 ? (termQP / termCredits) : 0;
+  const totCredits = priorC + termCredits;
+  const cumGPA = totCredits > 0 ? ((priorQP + termQP) / totCredits) : 0;
+
+  document.getElementById("termSummary").textContent =
+    `Semester: ${termCredits.toFixed(1)} credits, GPA ${termGPA.toFixed(2)}`;
+  document.getElementById("cumulativeSummary").textContent =
+    `Cumulative: ${totCredits.toFixed(1)} credits, GPA ${cumGPA.toFixed(2)}`;
+  document.getElementById("results").hidden = false;
+}
+</script>
+{% endblock %}

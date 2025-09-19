@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Class Selection</h2>
+  <p>Select classes for the upcoming term.</p>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  {% if classes %}
+  <table style="width:100%; border-collapse:collapse;">
+    <thead>
+      <tr>
+        <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Code</th>
+        <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Name</th>
+        <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Semester</th>
+        <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Year</th>
+        <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Dept</th>
+        <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:8px;">Instructor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in classes %}
+      <tr>
+        <td style="padding:8px;">{{ c.course_code }}</td>
+        <td style="padding:8px;">{{ c.course_name }}</td>
+        <td style="padding:8px;">{{ c.semester }}</td>
+        <td style="padding:8px;">{{ c.year }}</td>
+        <td style="padding:8px;">{{ c.department.code if c.department else '' }}</td>
+        <td style="padding:8px;">
+          {% if c.instructor %}{{ c.instructor.first_name }} {{ c.instructor.last_name }}{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No classes yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

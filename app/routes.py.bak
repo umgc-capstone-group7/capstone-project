@@ -49,29 +49,3 @@ def logout():
 def dashboard():
     classes = Classlist.query.order_by(Classlist.year.desc()).limit(10).all()
     return render_template("dashboard.html", user=current_user, classes=classes)
-
-
-@bp.route("/classes")
-@login_required
-def classes():
-    classes = Classlist.query.order_by(Classlist.year.desc(), Classlist.semester.desc()).all()
-    return render_template("classes.html", user=current_user, classes=classes)
-
-
-@bp.route("/class-selection")
-@login_required
-def class_selection():
-    classes = Classlist.query.order_by(Classlist.year.desc(), Classlist.semester.desc()).all()
-    return render_template("class_selection.html", user=current_user, classes=classes)
-
-
-@bp.route("/gpa")
-@login_required
-def gpa():
-    return render_template("gpa.html")
-
-
-@bp.route("/wellness")
-@login_required
-def wellness():
-    return render_template("wellness.html")

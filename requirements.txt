@@ -1,5 +1,7 @@
 flask==3.0.3
 flask_sqlalchemy==3.1.1
 flask_wtf==1.2.1
+flask_migrate==4.0.5
+flask_login==0.6.3
 email_validator==2.2.0
-Werkzeug==3.0.3
+Werkzeug==3.0.3python-dotenv==1.0.0
