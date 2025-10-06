@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Degree Planning</h2>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+  
+  <div class="card">
+    <h3>Computer Science Programs</h3>
+    <div class="program-info">
+      <h4>Bachelor of Science in Computer Science</h4>
+      <p><strong>Required Credits:</strong> 120 credits</p>
+      <p><strong>Program Type:</strong> Bachelor's Degree</p>
+      <p><strong>Department:</strong> Computer Science</p>
+      
+      <h5>Core Requirements:</h5>
+      <div class="requirements-grid">
+        <div class="req-category">
+          <h6>Foundation Courses (30 credits)</h6>
+          <ul>
+            <li>CMSC 100 - Introduction to Computer Science</li>
+            <li>CMSC 101 - Programming Fundamentals</li>
+            <li>CMSC 200 - Data Structures and Algorithms</li>
+            <li>CMSC 201 - Computer Organization</li>
+            <li>MATH 140 - Calculus I</li>
+            <li>MATH 141 - Calculus II</li>
+            <li>MATH 240 - Linear Algebra</li>
+            <li>STAT 200 - Elementary Statistics</li>
+            <li>ENGL 101 - English Composition</li>
+            <li>ENGL 102 - Critical Reading and Writing</li>
+          </ul>
+        </div>
+        
+        <div class="req-category">
+          <h6>Core CS Courses (45 credits)</h6>
+          <ul>
+            <li>CMSC 300 - Software Engineering</li>
+            <li>CMSC 301 - Database Systems</li>
+            <li>CMSC 302 - Operating Systems</li>
+            <li>CMSC 303 - Computer Networks</li>
+            <li>CMSC 304 - Theory of Computation</li>
+            <li>CMSC 305 - Computer Graphics</li>
+            <li>CMSC 306 - Artificial Intelligence</li>
+            <li>CMSC 307 - Machine Learning</li>
+            <li>CMSC 308 - Web Development</li>
+            <li>CMSC 309 - Mobile App Development</li>
+            <li>CMSC 310 - Cybersecurity</li>
+            <li>CMSC 311 - Cloud Computing</li>
+            <li>CMSC 312 - Data Science</li>
+            <li>CMSC 313 - Computer Vision</li>
+            <li>CMSC 314 - Capstone Project</li>
+          </ul>
+        </div>
+        
+        <div class="req-category">
+          <h6>Electives (30 credits)</h6>
+          <ul>
+            <li>Choose from 300+ level CS courses</li>
+            <li>Specialization tracks available:</li>
+            <li>• Software Engineering</li>
+            <li>• Data Science</li>
+            <li>• Cybersecurity</li>
+            <li>• Artificial Intelligence</li>
+            <li>• Web Development</li>
+          </ul>
+        </div>
+        
+        <div class="req-category">
+          <h6>General Education (15 credits)</h6>
+          <ul>
+            <li>Social Sciences (6 credits)</li>
+            <li>Humanities (6 credits)</li>
+            <li>Natural Sciences (3 credits)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Master of Science in Computer Science</h3>
+    <div class="program-info">
+      <h4>Graduate Program</h4>
+      <p><strong>Required Credits:</strong> 36 credits</p>
+      <p><strong>Program Type:</strong> Master's Degree</p>
+      <p><strong>Department:</strong> Computer Science</p>
+      
+      <h5>Graduate Requirements:</h5>
+      <div class="requirements-grid">
+        <div class="req-category">
+          <h6>Core Courses (18 credits)</h6>
+          <ul>
+            <li>CMSC 500 - Advanced Algorithms</li>
+            <li>CMSC 501 - Advanced Database Systems</li>
+            <li>CMSC 502 - Advanced Operating Systems</li>
+            <li>CMSC 503 - Computer Networks</li>
+            <li>CMSC 504 - Software Engineering</li>
+            <li>CMSC 505 - Research Methods</li>
+          </ul>
+        </div>
+        
+        <div class="req-category">
+          <h6>Specialization (12 credits)</h6>
+          <ul>
+            <li>Choose one specialization:</li>
+            <li>• Artificial Intelligence & Machine Learning</li>
+            <li>• Cybersecurity</li>
+            <li>• Data Science</li>
+            <li>• Software Engineering</li>
+            <li>• Computer Networks</li>
+          </ul>
+        </div>
+        
+        <div class="req-category">
+          <h6>Thesis/Project (6 credits)</h6>
+          <ul>
+            <li>CMSC 599 - Master's Thesis</li>
+            <li>or CMSC 598 - Capstone Project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+.program-info {
+  margin: 20px 0;
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.req-category {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.req-category h6 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+  font-weight: 600;
+}
+
+.req-category ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.req-category li {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.tool-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #e9ecef;
+}
+
+.tool-card h4 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+}
+
+.tool-card p {
+  margin: 0 0 15px 0;
+  color: #666;
+  font-size: 14px;
+}
+</style>
+{% endblock %}

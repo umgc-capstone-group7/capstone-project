@@ -1,0 +1,444 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Tutoring Services</h2>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+  
+  <div class="card">
+    <h3>Available Tutors</h3>
+    <div class="tutors-grid">
+      <div class="tutor-card">
+        <div class="tutor-avatar">
+          <div class="avatar-circle">SM</div>
+        </div>
+        <div class="tutor-info">
+          <h4>Sarah Martinez</h4>
+          <p><strong>Computer Science Specialist</strong></p>
+          <p>📧 sarah.martinez@umgc.edu</p>
+          <p>📞 (240) 555-0124</p>
+          <p>💰 $25/hour</p>
+          <div class="specializations">
+            <span class="tag">Programming</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Algorithms</span>
+          </div>
+          <div class="availability">
+            <p><strong>Available:</strong> Mon-Fri 2:00 PM - 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tutor-card">
+        <div class="tutor-avatar">
+          <div class="avatar-circle">MJ</div>
+        </div>
+        <div class="tutor-info">
+          <h4>Michael Johnson</h4>
+          <p><strong>Mathematics & Statistics</strong></p>
+          <p>📧 michael.johnson@umgc.edu</p>
+          <p>📞 (240) 555-0125</p>
+          <p>💰 $20/hour</p>
+          <div class="specializations">
+            <span class="tag">Calculus</span>
+            <span class="tag">Linear Algebra</span>
+            <span class="tag">Statistics</span>
+          </div>
+          <div class="availability">
+            <p><strong>Available:</strong> Tue-Thu 4:00 PM - 10:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tutor-card">
+        <div class="tutor-avatar">
+          <div class="avatar-circle">AL</div>
+        </div>
+        <div class="tutor-info">
+          <h4>Alex Liu</h4>
+          <p><strong>Software Engineering</strong></p>
+          <p>📧 alex.liu@umgc.edu</p>
+          <p>📞 (240) 555-0126</p>
+          <p>💰 $30/hour</p>
+          <div class="specializations">
+            <span class="tag">Web Development</span>
+            <span class="tag">Database Design</span>
+            <span class="tag">Software Engineering</span>
+          </div>
+          <div class="availability">
+            <p><strong>Available:</strong> Mon-Wed-Fri 6:00 PM - 11:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tutor-card">
+        <div class="tutor-avatar">
+          <div class="avatar-circle">ER</div>
+        </div>
+        <div class="tutor-info">
+          <h4>Emily Rodriguez</h4>
+          <p><strong>Cybersecurity & Networking</strong></p>
+          <p>📧 emily.rodriguez@umgc.edu</p>
+          <p>📞 (240) 555-0127</p>
+          <p>💰 $28/hour</p>
+          <div class="specializations">
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Network Security</span>
+            <span class="tag">Ethical Hacking</span>
+          </div>
+          <div class="availability">
+            <p><strong>Available:</strong> Tue-Thu 3:00 PM - 9:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Subject Areas</h3>
+    <div class="subjects-grid">
+      <div class="subject-category">
+        <h4>Computer Science</h4>
+        <div class="subject-list">
+          <div class="subject-item">
+            <span class="subject-name">Programming Fundamentals</span>
+            <span class="tutor-count">3 tutors available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Data Structures & Algorithms</span>
+            <span class="tutor-count">2 tutors available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Software Engineering</span>
+            <span class="tutor-count">2 tutors available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Database Systems</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Operating Systems</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="subject-category">
+        <h4>Mathematics</h4>
+        <div class="subject-list">
+          <div class="subject-item">
+            <span class="subject-name">Calculus I & II</span>
+            <span class="tutor-count">2 tutors available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Linear Algebra</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Statistics</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Discrete Mathematics</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="subject-category">
+        <h4>Specialized Areas</h4>
+        <div class="subject-list">
+          <div class="subject-item">
+            <span class="subject-name">Cybersecurity</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Web Development</span>
+            <span class="tutor-count">2 tutors available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Machine Learning</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+          <div class="subject-item">
+            <span class="subject-name">Mobile App Development</span>
+            <span class="tutor-count">1 tutor available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>How to Get Started</h3>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Choose Your Subject</h4>
+          <p>Select the subject area you need help with from our available tutors.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Book a Session</h4>
+          <p>Click "Book Session" to schedule a one-on-one tutoring session.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Meet Your Tutor</h4>
+          <p>Join the session via video call or in-person meeting.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Get Help</h4>
+          <p>Work with your tutor to understand concepts and complete assignments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Tutoring Policies</h3>
+    <div class="policies">
+      <div class="policy-section">
+        <h4>📅 Scheduling</h4>
+        <ul>
+          <li>Sessions must be booked at least 24 hours in advance</li>
+          <li>Maximum 2 hours per session</li>
+          <li>Cancellations must be made 4 hours before the session</li>
+          <li>No-shows will be charged the full session rate</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h4>💰 Payment</h4>
+        <ul>
+          <li>Payment is due at the time of booking</li>
+          <li>Rates vary by tutor and subject area</li>
+          <li>Refunds available for cancellations made 4+ hours in advance</li>
+          <li>Group sessions (2+ students) receive 10% discount</li>
+        </ul>
+      </div>
+      <div class="policy-section">
+        <h4>📚 Academic Integrity</h4>
+        <ul>
+          <li>Tutors provide guidance and explanation, not completed work</li>
+          <li>Students must complete their own assignments</li>
+          <li>Tutors will not write code or solve problems for students</li>
+          <li>Focus is on understanding concepts and learning methods</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+.tutors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.tutor-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.tutor-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tutor-info {
+  flex: 1;
+}
+
+.tutor-info h4 {
+  margin: 0 0 5px 0;
+  color: #007bff;
+}
+
+.tutor-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.specializations {
+  margin: 10px 0;
+}
+
+.tag {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px;
+}
+
+.availability {
+  margin: 10px 0;
+}
+
+.availability p {
+  font-size: 12px;
+  color: #28a745;
+  font-weight: 500;
+}
+
+.tutor-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.subject-category {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.subject-category h4 {
+  margin: 0 0 15px 0;
+  color: #007bff;
+}
+
+.subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subject-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.subject-name {
+  font-weight: 500;
+  color: #000;
+}
+
+.tutor-count {
+  font-size: 12px;
+  color: #28a745;
+  font-weight: 500;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+}
+
+.step-content p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.policies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.policy-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.policy-section h4 {
+  margin: 0 0 15px 0;
+  color: #007bff;
+}
+
+.policy-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.policy-section li {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+</style>
+{% endblock %}

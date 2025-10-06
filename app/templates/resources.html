@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Campus & Academic Resources</h2>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+  
+  <div class="card">
+    <h3>Academic Support Services</h3>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <div class="resource-icon">📚</div>
+        <div class="resource-content">
+          <h4>Effective Writing Center</h4>
+          <p>Get help with writing assignments, essays, and research papers.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> writingcenter@umgc.edu</p>
+            <p><strong>Services:</strong> Writing guides, AI review, video tutorials</p>
+            <p><strong>Hours:</strong> 24/7 online resources</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">🧮</div>
+        <div class="resource-content">
+          <h4>Math & Science Tutoring</h4>
+          <p>Get help with mathematics, physics, chemistry, and other science courses.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> tutoring@umgc.edu</p>
+            <p><strong>Services:</strong> One-on-one tutoring, group sessions</p>
+            <p><strong>Hours:</strong> Mon-Fri 9:00 AM - 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">💻</div>
+        <div class="resource-content">
+          <h4>Computer Lab Access</h4>
+          <p>Access to computer labs with specialized software for your courses.</p>
+          <div class="resource-details">
+            <p><strong>Location:</strong> Science Building, Room 101</p>
+            <p><strong>Software:</strong> Programming IDEs, design tools, databases</p>
+            <p><strong>Hours:</strong> Mon-Sun 6:00 AM - 11:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">📖</div>
+        <div class="resource-content">
+          <h4>Library Services</h4>
+          <p>Access to books, journals, databases, and research assistance.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> library@umgc.edu</p>
+            <p><strong>Services:</strong> Research help, interlibrary loan, study spaces</p>
+            <p><strong>Hours:</strong> Mon-Thu 8:00 AM - 10:00 PM, Fri 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Student Support Services</h3>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <div class="resource-icon">♿</div>
+        <div class="resource-content">
+          <h4>Accessibility Services</h4>
+          <p>Support for students with disabilities and accommodation needs.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> accessibilityservices@umgc.edu</p>
+            <p><strong>Phone:</strong> (240) 684-2287</p>
+            <p><strong>Services:</strong> Accommodations, assistive technology, advocacy</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">🎓</div>
+        <div class="resource-content">
+          <h4>Career Services</h4>
+          <p>Career counseling, job search assistance, and professional development.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> careerservices@umgc.edu</p>
+            <p><strong>Services:</strong> Resume review, interview prep, job fairs</p>
+            <p><strong>Hours:</strong> Mon-Fri 9:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">💰</div>
+        <div class="resource-content">
+          <h4>Financial Aid Office</h4>
+          <p>Assistance with financial aid, scholarships, and payment plans.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> financialaid@umgc.edu</p>
+            <p><strong>Phone:</strong> (240) 684-2000</p>
+            <p><strong>Services:</strong> FAFSA help, scholarship search, payment options</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">🏠</div>
+        <div class="resource-content">
+          <h4>Student Life & Housing</h4>
+          <p>Information about campus life, housing options, and student activities.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> studentlife@umgc.edu</p>
+            <p><strong>Services:</strong> Housing assistance, student organizations, events</p>
+            <p><strong>Hours:</strong> Mon-Fri 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Technology & IT Support</h3>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <div class="resource-icon">💻</div>
+        <div class="resource-content">
+          <h4>IT Help Desk</h4>
+          <p>Technical support for computer issues, software, and online platforms.</p>
+          <div class="resource-details">
+            <p><strong>Phone:</strong> (888) 360-8682</p>
+            <p><strong>Email:</strong> helpdesk@umgc.edu</p>
+            <p><strong>Services:</strong> Password reset, software installation, troubleshooting</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">📱</div>
+        <div class="resource-content">
+          <h4>Student Portal Support</h4>
+          <p>Help with navigating the student portal and online course platforms.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> portalhelp@umgc.edu</p>
+            <p><strong>Services:</strong> Portal navigation, course access, grade viewing</p>
+            <p><strong>Hours:</strong> 24/7 online support</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">🔒</div>
+        <div class="resource-content">
+          <h4>Cybersecurity Resources</h4>
+          <p>Learn about online safety, secure computing, and data protection.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> security@umgc.edu</p>
+            <p><strong>Services:</strong> Security training, phishing awareness, safe computing</p>
+            <p><strong>Resources:</strong> Online tutorials, security guides</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Health & Wellness Resources</h3>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <div class="resource-icon">🏥</div>
+        <div class="resource-content">
+          <h4>Student Health Center</h4>
+          <p>Basic health services, immunizations, and health counseling.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> healthcenter@umgc.edu</p>
+            <p><strong>Phone:</strong> (240) 684-3000</p>
+            <p><strong>Services:</strong> Basic medical care, health screenings, counseling</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">🧠</div>
+        <div class="resource-content">
+          <h4>Counseling Services</h4>
+          <p>Mental health support, stress management, and personal counseling.</p>
+          <div class="resource-details">
+            <p><strong>Contact:</strong> counseling@umgc.edu</p>
+            <p><strong>Phone:</strong> (240) 684-4000</p>
+            <p><strong>Services:</strong> Individual counseling, group therapy, crisis support</p>
+          </div>
+          <button class="btn btn-primary">Schedule Counseling</button>
+        </div>
+      </div>
+      
+      <div class="resource-item">
+        <div class="resource-icon">🏃</div>
+        <div class="resource-content">
+          <h4>Recreation & Fitness</h4>
+          <p>Access to gym facilities, fitness classes, and recreational activities.</p>
+          <div class="resource-details">
+            <p><strong>Location:</strong> Recreation Center</p>
+            <p><strong>Services:</strong> Gym access, fitness classes, intramural sports</p>
+            <p><strong>Hours:</strong> Mon-Fri 6:00 AM - 10:00 PM, Sat-Sun 8:00 AM - 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Emergency Contacts</h3>
+    <div class="emergency-contacts">
+      <div class="emergency-item urgent">
+        <h4>🚨 Emergency Services</h4>
+        <p><strong>Call 911</strong> for immediate emergency assistance</p>
+      </div>
+      <div class="emergency-item">
+        <h4>📞 Campus Security</h4>
+        <p><strong>Phone:</strong> (240) 684-9111</p>
+        <p>24/7 campus security and emergency response</p>
+      </div>
+      <div class="emergency-item">
+        <h4>🆘 Crisis Hotline</h4>
+        <p><strong>Phone:</strong> 988</p>
+        <p>National Suicide & Crisis Lifeline</p>
+      </div>
+      <div class="emergency-item">
+        <h4>💬 Crisis Text Line</h4>
+        <p><strong>Text:</strong> HOME to 741741</p>
+        <p>24/7 crisis text support</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.resource-item {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.resource-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.resource-content {
+  flex: 1;
+}
+
+.resource-content h4 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+}
+
+.resource-content p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.resource-details {
+  margin: 15px 0;
+  padding: 15px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.resource-details p {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #333;
+}
+
+.emergency-contacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.emergency-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  text-align: center;
+}
+
+.emergency-item.urgent {
+  background: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.emergency-item h4 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+}
+
+.emergency-item.urgent h4 {
+  color: #dc3545;
+}
+
+.emergency-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.quick-links .btn {
+  margin: 5px;
+}
+</style>
+{% endblock %}

@@ -1,8 +1,11 @@
-from flask import Blueprint, render_template, redirect, url_for, request, session, flash
+from flask import Blueprint, render_template, redirect, url_for, request, session, flash, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from . import db
 from .models import User, Classlist
 from .forms import RegisterForm, LoginForm
+import os
+import json
+import re
 
 bp = Blueprint("main", __name__)
 
@@ -75,3 +78,58 @@ def gpa():
 @login_required
 def wellness():
     return render_template("wellness.html")
+
+
+@bp.route("/resume-builder")
+@login_required
+def resume_builder():
+    return render_template("resume_builder.html")
+
+
+
+
+@bp.route("/degree-planning")
+@login_required
+def degree_planning():
+    return render_template("degree_planning.html")
+
+@bp.route("/advising")
+@login_required
+def advising():
+    return render_template("advising.html")
+
+@bp.route("/tutoring")
+@login_required
+def tutoring():
+    return render_template("tutoring.html")
+
+@bp.route("/resources")
+@login_required
+def resources():
+    return render_template("resources.html")
+
+@bp.route("/api/analyze-text", methods=["POST"])
+@login_required
+def analyze_text():
+    """Analyze text and extract key information for quiz generation"""
+    try:
+        data = request.get_json()
+        text = data.get('text', '')
+        
+        if not text.strip():
+            return jsonify({'error': 'Please provide text to analyze'}), 400
+        
+        # Analyze the text
+        analysis = analyze_text_content(text)
+        
+        return jsonify({
+            'success': True,
+            'analysis': analysis
+        })
+        
+    except Exception as e:
+        return jsonify({'error': f'Failed to analyze text: {str(e)}'}), 500
+
+
+
+

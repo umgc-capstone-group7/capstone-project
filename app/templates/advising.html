@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Academic Advising</h2>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+  
+  <div class="card">
+    <h3>Your Academic Advisor</h3>
+    <div class="advisor-info">
+      <div class="advisor-card">
+        <div class="advisor-avatar">
+          <div class="avatar-circle">JD</div>
+        </div>
+        <div class="advisor-details">
+          <h4>Dr. Jennifer Davis</h4>
+          <p><strong>Computer Science Advisor</strong></p>
+          <p>📧 jennifer.davis@umgc.edu</p>
+          <p>📞 (240) 555-0123</p>
+          <p>🏢 Office: Science Building, Room 205</p>
+          <p>⏰ Office Hours: Mon-Fri 9:00 AM - 5:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Academic Progress</h3>
+    <div class="progress-section">
+      <div class="progress-stats">
+        <div class="stat-item">
+          <h4>Credits Completed</h4>
+          <div class="stat-number">87</div>
+          <div class="stat-label">of 120 required</div>
+        </div>
+        <div class="stat-item">
+          <h4>Current GPA</h4>
+          <div class="stat-number">3.42</div>
+          <div class="stat-label">Cumulative</div>
+        </div>
+        <div class="stat-item">
+          <h4>Semesters Remaining</h4>
+          <div class="stat-number">2</div>
+          <div class="stat-label">Estimated</div>
+        </div>
+        <div class="stat-item">
+          <h4>Graduation Date</h4>
+          <div class="stat-number">May 2024</div>
+          <div class="stat-label">Projected</div>
+        </div>
+      </div>
+      
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 72.5%"></div>
+        <span class="progress-text">72.5% Complete</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Degree Requirements Status</h3>
+    <div class="requirements-status">
+      <div class="req-section">
+        <h4>✅ Core Requirements (45/45 credits)</h4>
+        <div class="req-items">
+          <div class="req-item completed">CMSC 100 - Introduction to Computer Science</div>
+          <div class="req-item completed">CMSC 101 - Programming Fundamentals</div>
+          <div class="req-item completed">CMSC 200 - Data Structures and Algorithms</div>
+          <div class="req-item completed">CMSC 201 - Computer Organization</div>
+          <div class="req-item completed">MATH 140 - Calculus I</div>
+          <div class="req-item completed">MATH 141 - Calculus II</div>
+          <div class="req-item completed">MATH 240 - Linear Algebra</div>
+          <div class="req-item completed">STAT 200 - Elementary Statistics</div>
+        </div>
+      </div>
+      
+      <div class="req-section">
+        <h4>🔄 In Progress (12/30 credits)</h4>
+        <div class="req-items">
+          <div class="req-item in-progress">CMSC 300 - Software Engineering (Current)</div>
+          <div class="req-item in-progress">CMSC 301 - Database Systems (Current)</div>
+          <div class="req-item in-progress">CMSC 302 - Operating Systems (Current)</div>
+          <div class="req-item pending">CMSC 303 - Computer Networks (Next Semester)</div>
+          <div class="req-item pending">CMSC 304 - Theory of Computation (Next Semester)</div>
+        </div>
+      </div>
+      
+      <div class="req-section">
+        <h4>⏳ Pending (18/30 credits)</h4>
+        <div class="req-items">
+          <div class="req-item pending">CMSC 305 - Computer Graphics</div>
+          <div class="req-item pending">CMSC 306 - Artificial Intelligence</div>
+          <div class="req-item pending">CMSC 307 - Machine Learning</div>
+          <div class="req-item pending">CMSC 308 - Web Development</div>
+          <div class="req-item pending">CMSC 309 - Mobile App Development</div>
+          <div class="req-item pending">CMSC 310 - Cybersecurity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Upcoming Deadlines</h3>
+    <div class="deadlines">
+      <div class="deadline-item urgent">
+        <div class="deadline-date">Dec 15, 2023</div>
+        <div class="deadline-content">
+          <h5>Spring 2024 Registration Opens</h5>
+          <p>Register for next semester courses</p>
+        </div>
+      </div>
+      <div class="deadline-item">
+        <div class="deadline-date">Jan 10, 2024</div>
+        <div class="deadline-content">
+          <h5>Add/Drop Period Ends</h5>
+          <p>Last day to add or drop courses</p>
+        </div>
+      </div>
+      <div class="deadline-item">
+        <div class="deadline-date">Feb 1, 2024</div>
+        <div class="deadline-content">
+          <h5>Graduation Application Deadline</h5>
+          <p>Apply for May 2024 graduation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+.advisor-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.advisor-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.advisor-avatar {
+  flex-shrink: 0;
+}
+
+.avatar-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.advisor-details h4 {
+  margin: 0 0 5px 0;
+  color: #007bff;
+}
+
+.advisor-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.advisor-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.progress-section {
+  margin: 20px 0;
+}
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-item h4 {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+  margin: 10px 0;
+}
+
+.stat-label {
+  color: #333;
+  font-size: 12px;
+}
+
+.progress-bar {
+  position: relative;
+  background: #e9ecef;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.requirements-status {
+  margin: 20px 0;
+}
+
+.req-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.req-section h4 {
+  margin: 0 0 15px 0;
+  color: #007bff;
+}
+
+.req-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+.req-item {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  border-left: 4px solid;
+}
+
+.req-item.completed {
+  background: #d4edda;
+  border-left-color: #28a745;
+  color: #155724;
+}
+
+.req-item.in-progress {
+  background: #fff3cd;
+  border-left-color: #ffc107;
+  color: #856404;
+}
+
+.req-item.pending {
+  background: #f8d7da;
+  border-left-color: #dc3545;
+  color: #721c24;
+}
+
+.deadlines {
+  margin: 20px 0;
+}
+
+.deadline-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 0;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.deadline-item.urgent {
+  border-left-color: #dc3545;
+  background: #f8d7da;
+}
+
+.deadline-date {
+  font-weight: bold;
+  color: #007bff;
+  margin-right: 20px;
+  min-width: 120px;
+}
+
+.deadline-item.urgent .deadline-date {
+  color: #dc3545;
+}
+
+.deadline-content h5 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.deadline-content p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.resource-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #e9ecef;
+}
+
+.resource-item h4 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+}
+
+.resource-item p {
+  margin: 0 0 15px 0;
+  color: #666;
+  font-size: 14px;
+}
+</style>
+{% endblock %}
