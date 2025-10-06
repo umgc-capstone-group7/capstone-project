@@ -219,3 +219,4 @@ __marimo__/
 *.swp
 .venv/
 __pycache__/
+resume-builder/

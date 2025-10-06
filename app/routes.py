@@ -75,3 +75,9 @@ def gpa():
 @login_required
 def wellness():
     return render_template("wellness.html")
+
+
+@bp.route("/resume-builder")
+@login_required
+def resume_builder():
+    return render_template("resume_builder.html")
