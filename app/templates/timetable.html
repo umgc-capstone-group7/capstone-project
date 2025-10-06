@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Class Timetable</h2>
+  <p>Interactive calendar to track your classes, assignments, and exams with offline access and real-time notifications.</p>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+</div>
+
+<!-- PWA Timetable Integration -->
+<div class="card" style="margin-top:16px;">
+  <div id="timetable-container" style="min-height: 600px;">
+    <!-- Timetable will be loaded here -->
+    <div style="text-align: center; padding: 40px;">
+      <h3>📅 Interactive Class Timetable</h3>
+      <p>Loading your personalized class schedule...</p>
+      <div style="margin: 20px 0;">
+        <div style="display: inline-block; width: 40px; height: 40px; border: 4px solid #2a2433; border-top: 4px solid var(--accent-2); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Timetable Styles -->
+<link rel="stylesheet" href="{{ url_for('static', filename='timetable/css/bootstrap-css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='timetable/css/calendar/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='timetable/css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='timetable/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Timetable Scripts -->
+<script src="{{ url_for('static', filename='timetable/js/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/bootstrap-js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/auth.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/db.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/calendar/main.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/calendar/interaction.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/calendar/scrollSide.js') }}"></script>
+<script src="{{ url_for('static', filename='timetable/js/calendar/timemark.js') }}"></script>
+
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Override timetable styles to match our theme */
+.timetable-container {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+}
+
+.timetable-container .form-control {
+  background: #18141f !important;
+  border: 1px solid #2a2433 !important;
+  color: var(--text) !important;
+}
+
+.timetable-container .btn {
+  background: var(--accent-2) !important;
+  color: #000 !important;
+  border: none !important;
+}
+
+.timetable-container .modal-content {
+  background: var(--panel) !important;
+  border: 1px solid #2a2433 !important;
+}
+
+.timetable-container .modal-header {
+  border-bottom: 1px solid #2a2433 !important;
+}
+
+.timetable-container .modal-footer {
+  border-top: 1px solid #2a2433 !important;
+}
+</style>
+
+<script>
+// Initialize timetable when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  // Load the timetable HTML content
+  fetch('{{ url_for("static", filename="timetable/calendar.html") }}')
+    .then(response => response.text())
+    .then(html => {
+      // Extract the main content from the calendar.html
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const calendarContent = doc.querySelector('body');
+      
+      if (calendarContent) {
+        // Replace the loading content with the actual timetable
+        document.getElementById('timetable-container').innerHTML = calendarContent.innerHTML;
+        
+        // Initialize timetable functionality
+        if (typeof initTimetable === 'function') {
+          initTimetable();
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error loading timetable:', error);
+      document.getElementById('timetable-container').innerHTML = `
+        <div style="text-align: center; padding: 40px;">
+          <h3>📅 Class Timetable</h3>
+          <p>Interactive calendar to track your classes, assignments, and exams.</p>
+          <div style="margin-top: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+              <div style="padding: 15px; background: #0b0a0f; border-radius: 8px; border: 1px solid #2a2433;">
+                <h5 style="color: var(--accent-2); margin: 0 0 8px;">📚 Class Management</h5>
+                <p style="margin: 0; font-size: 14px; color: #b7b1bf;">Add, edit, and organize your class schedule</p>
+              </div>
+              <div style="padding: 15px; background: #0b0a0f; border-radius: 8px; border: 1px solid #2a2433;">
+                <h5 style="color: var(--accent-2); margin: 0 0 8px;">📝 Assignment Tracking</h5>
+                <p style="margin: 0; font-size: 14px; color: #b7b1bf;">Track due dates and assignment deadlines</p>
+              </div>
+              <div style="padding: 15px; background: #0b0a0f; border-radius: 8px; border: 1px solid #2a2433;">
+                <h5 style="color: var(--accent-2); margin: 0 0 8px;">🔔 Smart Notifications</h5>
+                <p style="margin: 0; font-size: 14px; color: #b7b1bf;">Get reminders for classes and assignments</p>
+              </div>
+              <div style="padding: 15px; background: #0b0a0f; border-radius: 8px; border: 1px solid #2a2433;">
+                <h5 style="color: var(--accent-2); margin: 0 0 8px;">📱 Offline Access</h5>
+                <p style="margin: 0; font-size: 14px; color: #b7b1bf;">Access your schedule even without internet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+});
+
+// Function to initialize timetable (will be called when timetable loads)
+function initTimetable() {
+  console.log('Timetable initialized successfully!');
+  // Add any additional initialization code here
+}
+</script>
+{% endblock %}

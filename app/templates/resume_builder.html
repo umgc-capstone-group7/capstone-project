@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Resume Builder</h2>
+  <p>Create a modern, professional resume with real-time preview and ATS-friendly formatting.</p>
+  <p><a href="{{ url_for('main.dashboard') }}">&larr; Back to Dashboard</a></p>
+</div>
+
+<div class="card" style="margin-top:16px;">
+  <form id="resumeForm" onsubmit="event.preventDefault(); generateResume();">
+    
+    <!-- Personal Information Section -->
+    <div class="field">
+      <h3 style="margin: 20px 0 10px; color: var(--accent-2);">Personal Information</h3>
+      <div class="form-grid">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="fullName" placeholder="John Doe" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="john.doe@email.com" required>
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <input type="text" id="location" placeholder="City, State" required>
+        </div>
+        <div class="field">
+          <label>LinkedIn Profile (optional)</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/johndoe">
+        </div>
+        <div class="field">
+          <label>Portfolio/Website (optional)</label>
+          <input type="url" id="website" placeholder="https://johndoe.com">
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Summary -->
+    <div class="field">
+      <h3 style="margin: 20px 0 10px; color: var(--accent-2);">Professional Summary</h3>
+      <div class="field">
+        <label>Summary</label>
+        <textarea id="summary" rows="4" placeholder="Brief professional summary highlighting your key skills and experience..." style="width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; background: #18141f; color: var(--text); border: 1px solid #2a2433; resize: vertical;"></textarea>
+      </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="field">
+      <h3 style="margin: 20px 0 10px; color: var(--accent-2);">Work Experience</h3>
+      <div id="workExperience">
+        <div class="work-entry" style="border: 1px solid #2a2433; border-radius: 10px; padding: 16px; margin-bottom: 16px; background: #18141f;">
+          <div class="form-grid">
+            <div class="field">
+              <label>Job Title</label>
+              <input type="text" placeholder="Software Engineer" required>
+            </div>
+            <div class="field">
+              <label>Company</label>
+              <input type="text" placeholder="Tech Company Inc." required>
+            </div>
+            <div class="field">
+              <label>Start Date</label>
+              <input type="text" placeholder="Jan 2022" required>
+            </div>
+            <div class="field">
+              <label>End Date</label>
+              <input type="text" placeholder="Present" required>
+            </div>
+          </div>
+          <div class="field">
+            <label>Description</label>
+            <textarea rows="3" placeholder="Describe your key responsibilities and achievements..." style="width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; background: #18141f; color: var(--text); border: 1px solid #2a2433; resize: vertical;"></textarea>
+          </div>
+          <button type="button" onclick="removeWorkEntry(this)" style="background: #a41e34; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px;">Remove</button>
+        </div>
+      </div>
+      <button type="button" onclick="addWorkEntry()" class="btn" style="margin-top: 10px;">Add Work Experience</button>
+    </div>
+
+    <!-- Education -->
+    <div class="field">
+      <h3 style="margin: 20px 0 10px; color: var(--accent-2);">Education</h3>
+      <div id="education">
+        <div class="education-entry" style="border: 1px solid #2a2433; border-radius: 10px; padding: 16px; margin-bottom: 16px; background: #18141f;">
+          <div class="form-grid">
+            <div class="field">
+              <label>Degree</label>
+              <input type="text" placeholder="Bachelor of Science in Computer Science" required>
+            </div>
+            <div class="field">
+              <label>Institution</label>
+              <input type="text" placeholder="University of Maryland Global Campus" required>
+            </div>
+            <div class="field">
+              <label>Graduation Date</label>
+              <input type="text" placeholder="May 2024" required>
+            </div>
+            <div class="field">
+              <label>GPA (optional)</label>
+              <input type="text" placeholder="3.8">
+            </div>
+          </div>
+          <button type="button" onclick="removeEducationEntry(this)" style="background: #a41e34; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px;">Remove</button>
+        </div>
+      </div>
+      <button type="button" onclick="addEducationEntry()" class="btn" style="margin-top: 10px;">Add Education</button>
+    </div>
+
+    <!-- Skills -->
+    <div class="field">
+      <h3 style="margin: 20px 0 10px; color: var(--accent-2);">Skills</h3>
+      <div class="field">
+        <label>Technical Skills (comma-separated)</label>
+        <input type="text" id="skills" placeholder="Python, JavaScript, React, SQL, Git, Docker" style="width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; background: #18141f; color: var(--text); border: 1px solid #2a2433;">
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions" style="margin-top: 30px;">
+      <button type="submit" class="btn" style="background: var(--accent-2); color: #000; font-weight: 700;">Generate Resume</button>
+      <button type="button" onclick="clearForm()" class="btn btn-secondary">Clear Form</button>
+    </div>
+  </form>
+</div>
+
+<!-- Resume Preview -->
+<div class="card" style="margin-top:16px;" id="resumePreview" hidden>
+  <h3>Resume Preview</h3>
+  <div id="previewContent" style="background: white; color: #333; padding: 20px; border-radius: 8px; font-family: Arial, sans-serif; line-height: 1.6;">
+    <!-- Resume content will be generated here -->
+  </div>
+  <div class="actions" style="margin-top: 20px;">
+    <button onclick="downloadResume()" class="btn" style="background: var(--accent-2); color: #000;">Download as PDF</button>
+    <button onclick="printResume()" class="btn btn-secondary">Print Resume</button>
+  </div>
+</div>
+
+<script>
+function addWorkEntry() {
+  const container = document.getElementById('workExperience');
+  const newEntry = document.createElement('div');
+  newEntry.className = 'work-entry';
+  newEntry.style.cssText = 'border: 1px solid #2a2433; border-radius: 10px; padding: 16px; margin-bottom: 16px; background: #18141f;';
+  newEntry.innerHTML = `
+    <div class="form-grid">
+      <div class="field">
+        <label>Job Title</label>
+        <input type="text" placeholder="Software Engineer" required>
+      </div>
+      <div class="field">
+        <label>Company</label>
+        <input type="text" placeholder="Tech Company Inc." required>
+      </div>
+      <div class="field">
+        <label>Start Date</label>
+        <input type="text" placeholder="Jan 2022" required>
+      </div>
+      <div class="field">
+        <label>End Date</label>
+        <input type="text" placeholder="Present" required>
+      </div>
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea rows="3" placeholder="Describe your key responsibilities and achievements..." style="width: 100%; padding: 14px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 16px; background: #18141f; color: var(--text); border: 1px solid #2a2433; resize: vertical;"></textarea>
+    </div>
+    <button type="button" onclick="removeWorkEntry(this)" style="background: #a41e34; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px;">Remove</button>
+  `;
+  container.appendChild(newEntry);
+}
+
+function removeWorkEntry(button) {
+  button.closest('.work-entry').remove();
+}
+
+function addEducationEntry() {
+  const container = document.getElementById('education');
+  const newEntry = document.createElement('div');
+  newEntry.className = 'education-entry';
+  newEntry.style.cssText = 'border: 1px solid #2a2433; border-radius: 10px; padding: 16px; margin-bottom: 16px; background: #18141f;';
+  newEntry.innerHTML = `
+    <div class="form-grid">
+      <div class="field">
+        <label>Degree</label>
+        <input type="text" placeholder="Bachelor of Science in Computer Science" required>
+      </div>
+      <div class="field">
+        <label>Institution</label>
+        <input type="text" placeholder="University of Maryland Global Campus" required>
+      </div>
+      <div class="field">
+        <label>Graduation Date</label>
+        <input type="text" placeholder="May 2024" required>
+      </div>
+      <div class="field">
+               <label>GPA (optional)</label>
+        <input type="text" placeholder="3.8">
+      </div>
+    </div>
+    <button type="button" onclick="removeEducationEntry(this)" style="background: #a41e34; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; margin-top: 8px;">Remove</button>
+  `;
+  container.appendChild(newEntry);
+}
+
+function removeEducationEntry(button) {
+  button.closest('.education-entry').remove();
+}
+
+function clearForm() {
+  document.getElementById('resumeForm').reset();
+  document.getElementById('resumePreview').hidden = true;
+}
+
+function generateResume() {
+  const formData = {
+    name: document.getElementById('fullName').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    location: document.getElementById('location').value,
+    linkedin: document.getElementById('linkedin').value,
+    website: document.getElementById('website').value,
+    summary: document.getElementById('summary').value,
+    skills: document.getElementById('skills').value
+  };
+
+  // Collect work experience
+  const workEntries = [];
+  document.querySelectorAll('.work-entry').forEach(entry => {
+    const inputs = entry.querySelectorAll('input, textarea');
+    if (inputs[0].value && inputs[1].value) {
+      workEntries.push({
+        title: inputs[0].value,
+        company: inputs[1].value,
+        startDate: inputs[2].value,
+        endDate: inputs[3].value,
+        description: inputs[4].value
+      });
+    }
+  });
+
+  // Collect education
+  const educationEntries = [];
+  document.querySelectorAll('.education-entry').forEach(entry => {
+    const inputs = entry.querySelectorAll('input');
+    if (inputs[0].value && inputs[1].value) {
+      educationEntries.push({
+        degree: inputs[0].value,
+        institution: inputs[1].value,
+        graduationDate: inputs[2].value,
+        gpa: inputs[3].value
+      });
+    }
+  });
+
+  // Generate resume HTML
+  let resumeHTML = `
+    <div style="max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+      <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid #a41e34; padding-bottom: 20px;">
+        <h1 style="margin: 0; font-size: 28px; color: #a41e34;">${formData.name}</h1>
+        <p style="margin: 5px 0; color: #666;">${formData.email} | ${formData.phone} | ${formData.location}</p>
+        ${formData.linkedin ? `<p style="margin: 5px 0;"><a href="${formData.linkedin}" style="color: #a41e34;">LinkedIn Profile</a></p>` : ''}
+        ${formData.website ? `<p style="margin: 5px 0;"><a href="${formData.website}" style="color: #a41e34;">Portfolio</a></p>` : ''}
+      </div>
+  `;
+
+  if (formData.summary) {
+    resumeHTML += `
+      <div style="margin-bottom: 25px;">
+        <h2 style="color: #a41e34; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Professional Summary</h2>
+        <p>${formData.summary}</p>
+      </div>
+    `;
+  }
+
+  if (workEntries.length > 0) {
+    resumeHTML += `
+      <div style="margin-bottom: 25px;">
+        <h2 style="color: #a41e34; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Work Experience</h2>
+    `;
+    workEntries.forEach(work => {
+      resumeHTML += `
+        <div style="margin-bottom: 20px;">
+          <h3 style="margin: 0; font-size: 18px;">${work.title}</h3>
+          <p style="margin: 5px 0; color: #666; font-weight: bold;">${work.company} | ${work.startDate} - ${work.endDate}</p>
+          <p style="margin: 10px 0;">${work.description}</p>
+        </div>
+      `;
+    });
+    resumeHTML += `</div>`;
+  }
+
+  if (educationEntries.length > 0) {
+    resumeHTML += `
+      <div style="margin-bottom: 25px;">
+        <h2 style="color: #a41e34; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Education</h2>
+    `;
+    educationEntries.forEach(edu => {
+      resumeHTML += `
+        <div style="margin-bottom: 15px;">
+          <h3 style="margin: 0; font-size: 16px;">${edu.degree}</h3>
+          <p style="margin: 5px 0; color: #666;">${edu.institution} | ${edu.graduationDate}${edu.gpa ? ` | GPA: ${edu.gpa}` : ''}</p>
+        </div>
+      `;
+    });
+    resumeHTML += `</div>`;
+  }
+
+  if (formData.skills) {
+    resumeHTML += `
+      <div style="margin-bottom: 25px;">
+        <h2 style="color: #a41e34; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Skills</h2>
+        <p>${formData.skills}</p>
+      </div>
+    `;
+  }
+
+  resumeHTML += `</div>`;
+
+  // Display preview
+  document.getElementById('previewContent').innerHTML = resumeHTML;
+  document.getElementById('resumePreview').hidden = false;
+  document.getElementById('resumePreview').scrollIntoView({ behavior: 'smooth' });
+}
+
+function downloadResume() {
+  // Simple PDF generation using browser's print functionality
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Resume - ${document.getElementById('fullName').value}</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          @media print { body { margin: 0; } }
+        </style>
+      </head>
+      <body>
+        ${document.getElementById('previewContent').innerHTML}
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
+  printWindow.print();
+}
+
+function printResume() {
+  const printContent = document.getElementById('previewContent').innerHTML;
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Resume - ${document.getElementById('fullName').value}</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          @media print { body { margin: 0; } }
+        </style>
+      </head>
+      <body>
+        ${printContent}
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
+  printWindow.print();
+}
+</script>
+{% endblock %}
